@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Book Heaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .checkout-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #333;
+            
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .payment-options {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .payment-options label {
+            display: block;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+<h2>📦 Checkout</h2>
+
+<div class="checkout-container">
+    <form id="checkout-form" action="place-order.html" method="POST">
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" name="fullname" id="fullname" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Shipping Address</label>
+            <input type="text" name="address" id="address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email (for confirmation)</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="payment-method">Select Payment Method</label>
+            <select id="payment-method" name="payment-method" required>
+                <option value="cod">Cash on Delivery (COD)</option>
+                <option value="upi">UPI</option>
+                <option value="net-banking">Net Banking</option>
+            </select>
+        </div>
+
+        <div class="payment-options" id="upi-options">
+            <label for="upi-method">Select UPI Payment Option</label>
+            <select id="upi-method" name="upi-method">
+                <option value="gpay">Google Pay</option>
+                <option value="phonepe">PhonePe</option>
+                <option value="paytm">Paytm</option>
+            </select>
+            <button type="button" class="submit-btn" onclick="redirectToUPIPaymentPage()">Proceed to Payment</button>
+        </div>
+
+        <div class="payment-options" id="net-banking-options">
+            <label for="netbanking-method">Select Net Banking Option</label>
+            <select id="netbanking-method" name="netbanking-method">
+                <option value="hdfc">HDFC Bank</option>
+                <option value="icici">ICICI Bank</option>
+                <option value="sbi">SBI Bank</option>
+                <option value="axis">Axis Bank</option>
+            </select>
+            <button type="button" class="submit-btn" onclick="redirectToNetBankingPaymentPage()">Proceed to Payment</button>
+        </div>
+
+        <button class="submit-btn" type="submit">Place Order</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('payment-method').addEventListener('change', function() {
+        var paymentMethod = this.value;
+        var upiOptions = document.getElementById('upi-options');
+        var netBankingOptions = document.getElementById('net-banking-options');
+
+        // Show/hide UPI and Net Banking options based on selection
+        if (paymentMethod === 'upi') {
+            upiOptions.style.display = 'block';  // Show UPI options
+            netBankingOptions.style.display = 'none';  // Hide Net Banking options
+        } else if (paymentMethod === 'net-banking') {
+            netBankingOptions.style.display = 'block';  // Show Net Banking options
+            upiOptions.style.display = 'none';  // Hide UPI options
+        } else {
+            upiOptions.style.display = 'none';  // Hide UPI options
+            netBankingOptions.style.display = 'none';  // Hide Net Banking options
+        }
+    });
+
+    function redirectToUPIPaymentPage() {
+        var upiMethod = document.getElementById('upi-method').value;
+
+        // Redirect user based on selected UPI option
+        if (upiMethod === 'gpay') {
+            window.location.href = 'https://pay.google.com';  // Google Pay URL (for demonstration)
+        } else if (upiMethod === 'phonepe') {
+            window.location.href = 'https://www.phonepe.com';  // PhonePe URL (for demonstration)
+        } else if (upiMethod === 'paytm') {
+            window.location.href = 'https://paytm.com';  // Paytm URL (for demonstration)
+        }
+    }
+
+    function redirectToNetBankingPaymentPage() {
+        var netBankingMethod = document.getElementById('netbanking-method').value;
+
+        // Redirect user based on selected Net Banking option
+        if (netBankingMethod === 'hdfc') {
+            window.location.href = 'https://www.hdfcbank.com';  // HDFC Bank URL (for demonstration)
+        } else if (netBankingMethod === 'icici') {
+            window.location.href = 'https://www.icicibank.com';  // ICICI Bank URL (for demonstration)
+        } else if (netBankingMethod === 'sbi') {
+            window.location.href = 'https://www.sbi.co.in';  // SBI Bank URL (for demonstration)
+        } else if (netBankingMethod === 'axis') {
+            window.location.href = 'https://www.axisbank.com';  // Axis Bank URL (for demonstration)
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+FileNotFoundError                         Traceback (most recent call last)
+<ipython-input-4-bb0a5add18c5> in <cell line: 0>()
+      4 
+      5 # Load the dataset (products.json)
+----> 6 with open('products.json') as f:
+      7     data = json.load(f)
+      8 
+
+FileNotFoundError: [Errno 2] No such file or directory: 'products.json'

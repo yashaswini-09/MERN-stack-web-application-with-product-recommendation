@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
+    color: white;
+    padding: 10px 0;
+}
+
+nav {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 20px;
+}
+
+.nav-links a:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+.account {
+    cursor: pointer;
+}
+
+.account .dropdown {
+    display: none;
+    position: absolute;
+    top: 35px;
+    background-color: #333;
+    min-width: 160px;
+    list-style: none;
+}
+
+.account:hover .dropdown {
+    display: block;
+}
+
+.account .dropdown li {
+    padding: 8px 16px;
+}
+
+.account .dropdown li a {
+    color: white;
+}
+
+.account .dropdown li a:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+.hero {
+    text-align: center;
+    padding: 150px 20px;
+    background-image: url('images.jpg'); /* Add your background image */
+    background-position: center;
+
+    color: black;
+    height: 100vh; /* Full viewport height */
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+
